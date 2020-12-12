@@ -1,0 +1,18 @@
+{
+  "imp": [
+    {
+      "banner": {
+        "h": 720,
+        "w": 1280
+      },
+      "id": "someId"
+    }
+  ],
+  "id": "42",
+  "ext": {
+      "id": "someId",
+      "cb": "justRandom",
+      "is_secure": true,
+      "user-agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:83.0) Gecko/20100101 Firefox/83.0"
+  }
+}
