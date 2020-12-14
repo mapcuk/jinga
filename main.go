@@ -42,17 +42,19 @@ func BidHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//gather needed data
-
-	isSecure := bidRequest.Imp[0].Secure
 	id := bidRequest.Imp[0].ID
 	cb := String(10)
 	userAgent := r.UserAgent()
 
-	t := ext{
+	t := &ext{
 		ID:        id,
 		Cb:        cb,
-		IsSecure:  isSecure,
 		UserAgent: userAgent,
+	}
+
+	if bidRequest.Imp[0].Secure != nil {
+		var isSecure = *bidRequest.Imp[0].Secure == 1
+		t.IsSecure = &isSecure
 	}
 
 	tBytes, err := json.Marshal(t)
@@ -81,7 +83,7 @@ func BidHandler(w http.ResponseWriter, r *http.Request) {
 type ext struct {
 	ID        string `json:"id"`
 	Cb        string `json:"cb"`
-	IsSecure  *int8  `json:"is_secure,omitempty"`
+	IsSecure  *bool  `json:"is_secure,omitempty"`
 	UserAgent string `json:"user-agent"`
 }
 

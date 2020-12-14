@@ -88,7 +88,7 @@ func TestBidHandler_AllIsOK(t *testing.T) {
 	}
 
 	// Check the response body is what we expect.
-	expected := `\{"id":"42","imp":\[\{"id":"someId","banner":\{"w":1280,"h":720\},"secure":1\}\],"ext":\{"id":"someId","cb":".*?","is_secure":1,"user-agent":"Mozilla/5.0 \(X11; Ubuntu; Linux x86_64; rv:83.0\) Gecko/20100101 Firefox/83.0"\}\}`
+	expected := `\{"id":"42","imp":\[\{"id":"someId","banner":\{"w":1280,"h":720\},"secure":1\}\],"ext":\{"id":"someId","cb":".*?","is_secure":true,"user-agent":"Mozilla/5.0 \(X11; Ubuntu; Linux x86_64; rv:83.0\) Gecko/20100101 Firefox/83.0"\}\}`
 	matched, _ := regexp.MatchString(expected, rr.Body.String())
 	if !matched {
 		t.Errorf("handler returned unexpected body: got %v want %v",
